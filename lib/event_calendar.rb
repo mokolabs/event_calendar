@@ -47,7 +47,7 @@ module EventCalendar
     def events_for_date_range(calendar, start_d, end_d)
       self.find(
         :all,
-        :conditions => [ '(? <= end_at) AND (start_at < ?)', start_d.to_time.utc, end_d.to_time.utc ],
+        :conditions => [ '(calendar_id = ?) AND (? <= end_at) AND (start_at < ?)', calendar, start_d.to_time.utc, end_d.to_time.utc ],
         :order => 'start_at ASC'
       )
     end
