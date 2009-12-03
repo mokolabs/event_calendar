@@ -18,9 +18,9 @@ module EventCalendar
     
     # For the given month, find the start and end dates
     # Find all the events within this range, and create event strips for them
-    def event_strips_for_month(calendar, shown_date, first_day_of_week=0)
+    def event_strips_for_month(shown_date, first_day_of_week=0)
       strip_start, strip_end = get_start_and_end_dates(shown_date, first_day_of_week)
-      events = events_for_date_range(calendar, strip_start, strip_end)
+      events = events_for_date_range(strip_start, strip_end)
       event_strips = create_event_strips(strip_start, strip_end, events)
       event_strips
     end
@@ -44,10 +44,10 @@ module EventCalendar
     end
     
     # Get the events overlapping the given start and end dates
-    def events_for_date_range(calendar, start_d, end_d)
+    def events_for_date_range(start_d, end_d)
       self.find(
         :all,
-        :conditions => [ 'calendar_id = ? AND (? <= end_at) AND (start_at < ?)', calendar, start_d.to_time.utc, end_d.to_time.utc ],
+        :conditions => [ '(? <= end_at) AND (start_at < ?)', start_d.to_time.utc, end_d.to_time.utc ],
         :order => 'start_at ASC'
       )
     end
