@@ -45,7 +45,7 @@ module EventCalendar
     
     # Get the events overlapping the given start and end dates
     def events_for_date_range(start_d, end_d)
-      calendar = params[:calendar_id].to_i || 1084
+      calendar = params[:id].to_i || 1084
       self.find(
         :all,
         :conditions => [ 'calendar_id = ? AND (? <= end_at) AND (start_at < ?)', calendar, start_d.to_time.utc, end_d.to_time.utc ],
