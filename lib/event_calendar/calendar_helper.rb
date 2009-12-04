@@ -234,6 +234,10 @@ module EventCalendar
       cal << %(</div>)   
       cal << %(</div>)
       cal << %(</div>)
+      
+      # Force new tags to the next line
+      cal.gsub(/></, ">\n<")
+      
     end
     
     # override this in your own helper for greater control
