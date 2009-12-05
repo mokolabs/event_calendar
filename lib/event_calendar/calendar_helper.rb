@@ -103,9 +103,9 @@ module EventCalendar
       else
         colspan = 7
       end
-      cal << %(<th colspan="#{colspan}" class="ec-month-name next_month">#{options[:month_name_text]}</th>)
+      cal << %(<th colspan="#{colspan}" class="ec-month-name">#{options[:month_name_text]}</th>)
       if options[:next_month_text]
-        cal << %(<th colspan="2" class="ec-month-nav">#{options[:next_month_text]}</th>)
+        cal << %(<th colspan="2" class="ec-month-nav next_month">#{options[:next_month_text]}</th>)
       end
       cal << %(</tr></thead></table>)
       
